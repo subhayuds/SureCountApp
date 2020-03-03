@@ -1,0 +1,3 @@
+class AccountsPageController {
+  AccountsPageController();
+}
