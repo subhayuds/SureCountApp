@@ -104,6 +104,7 @@ class CommonUIHelper {
           fontFamily: 'Californian FB',
           letterSpacing: 1.0,
           fontSize: 30,
+          inherit: true,
         ),
       ),
       leading: IconButton(
