@@ -1,50 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:sure_count_app/utilities/utility.dart';
+import 'package:sure_count_app/controllers/accountsPageController.dart';
+import 'package:sure_count_app/pages/helpers/accountsPageUIHelper.dart';
+import 'package:sure_count_app/pages/helpers/commonUIHelper.dart';
 
-class SureCountAccountsPage extends StatelessWidget {
+class SureCountAccountsPage extends StatefulWidget {
+  @override
+  _SureCountAccountsPageState createState() => _SureCountAccountsPageState();
+}
+
+class _SureCountAccountsPageState extends State<SureCountAccountsPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Organizations (Accounts)",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w800,
-            fontFamily: 'Californian FB',
-            letterSpacing: 1.0,
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.blueGrey,
-        elevation: 0.0,
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.home,
-              color: Colors.white,
-              size: 40.0,
-            ),
-            onPressed: () => Utility().onHomeButtonPress(context),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 40.0,
-            ),
-            onPressed: null,
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.exit_to_app,
-              color: Colors.white,
-              size: 40.0,
-            ),
-            onPressed: () => Utility().onLogoutButtonPress(context),
-          )
-        ],
+      key: _drawerKey,
+      appBar: CommonUIHelper().createAccountsPageAppBar(context, _drawerKey),
+      drawer: Drawer(
+        child: CommonUIHelper().getDrawer(context),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -59,86 +37,23 @@ class SureCountAccountsPage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-              child: Table(
-                border: TableBorder.all(),
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                children: <TableRow>[
-                  TableRow(
-                    decoration: BoxDecoration(
-                      color: Color(0xff222A35),
-                    ),
-                    children: <Widget>[
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text('ID',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Californian FB',
-                              letterSpacing: 1.0,
-                              fontSize: 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text('Name',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Californian FB',
-                              letterSpacing: 1.0,
-                              fontSize: 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Email',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Californian FB',
-                              letterSpacing: 1.0,
-                              fontSize: 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ]
-                  )
-                ],
+              child: FutureBuilder(
+                future: AccountsPageController().getAccountList(),
+                builder: (BuildContext context,AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return AccountsPageUIHelper().getAccountDataTable(snapshot.data);
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }
               ),
             ),
-          ],
-        )
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blueGrey,
-        child: Text(
-          'Developed by Cognovare Solution Private Limited.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Californian FB',
-            letterSpacing: 1.0,
-            fontSize: 15,
-          ),
+          ]
         ),
       ),
+      bottomNavigationBar: CommonUIHelper().createPageBottomBar(),
     );
   }
 }
