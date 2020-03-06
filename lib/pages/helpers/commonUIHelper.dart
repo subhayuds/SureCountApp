@@ -105,7 +105,7 @@ class CommonUIHelper {
             fontWeight: FontWeight.w800,
             fontFamily: 'Californian FB',
             letterSpacing: 1.0,
-            fontSize: 30,
+            fontSize: SizeConfig.safeBlockHorizontal*6,
             inherit: true,
           ),
         ),
@@ -124,7 +124,7 @@ class CommonUIHelper {
           icon: Icon(
             Icons.home,
             color: Colors.white,
-            size: 40.0,
+            size: SizeConfig.safeBlockHorizontal*6,
           ),
           onPressed: () => Utility().onHomeButtonPress(context),
         ),
@@ -132,7 +132,7 @@ class CommonUIHelper {
           icon: Icon(
             Icons.add,
             color: Colors.white,
-            size: 40.0,
+            size: SizeConfig.safeBlockHorizontal*6,
           ),
           onPressed: null,
         ),
@@ -140,7 +140,7 @@ class CommonUIHelper {
           icon: Icon(
             Icons.exit_to_app,
             color: Colors.white,
-            size: 40.0,
+            size: SizeConfig.safeBlockHorizontal*6,
           ),
           onPressed: () => Utility().onLogoutButtonPress(context),
         )
