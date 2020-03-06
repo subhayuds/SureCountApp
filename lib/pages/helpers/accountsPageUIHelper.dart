@@ -14,17 +14,20 @@ class AccountsPageUIHelper {
             child: Align(
               alignment: Alignment.center,
               child: Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(0.0, SizeConfig.safeBlockHorizontal, 0.0, SizeConfig.safeBlockHorizontal),
-                child: Text(
-                  account.accountName.toString(),
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    color: Color(0xff222A35),
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Californian FB',
-                    letterSpacing: 1.0,
-                    fontSize: SizeConfig.safeBlockHorizontal*4,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25, SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    account.accountName.toString(),
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Color(0xff222A35),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*4,
+                    ),
                   ),
                 ),
               ),
@@ -34,15 +37,22 @@ class AccountsPageUIHelper {
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Align(
               alignment: Alignment.center,
-              child: Text(
-                account.emailId.toString(),
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: Color(0xff222A35),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Californian FB',
-                  letterSpacing: 1.0,
-                  fontSize: SizeConfig.safeBlockHorizontal*4,
+              child: Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25, SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    account.emailId.toString(),
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Color(0xff222A35),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*4,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -51,15 +61,22 @@ class AccountsPageUIHelper {
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Align(
               alignment: Alignment.center,
-              child: Text(
-                account.phone.toString(),
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: Color(0xff222A35),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Californian FB',
-                  letterSpacing: 1.0,
-                  fontSize: SizeConfig.safeBlockHorizontal*4,
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25, SizeConfig.safeBlockHorizontal, SizeConfig.blockSizeVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    account.phone.toString(),
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Color(0xff222A35),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*4,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -81,15 +98,19 @@ class AccountsPageUIHelper {
               alignment: Alignment.center,
               child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(0.0, SizeConfig.safeBlockHorizontal*2, 0.0, SizeConfig.safeBlockHorizontal*2),
-                child: Text('Account Name',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Californian FB',
-                    letterSpacing: 1.0,
-                    fontSize: SizeConfig.safeBlockHorizontal*5,
+                height: SizeConfig.safeBlockVertical*3,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25, SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text('Account Name',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*5,
+                    ),
                   ),
                 ),
               ),
@@ -99,14 +120,22 @@ class AccountsPageUIHelper {
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Align(
               alignment: Alignment.center,
-              child: Text('Email ID',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Californian FB',
-                  letterSpacing: 1.0,
-                  fontSize: SizeConfig.safeBlockHorizontal*5,
+              child: Container(
+                alignment: Alignment.center,
+                height: SizeConfig.safeBlockVertical*3,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25, SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text('Email ID',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*5,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -115,15 +144,23 @@ class AccountsPageUIHelper {
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Align(
               alignment: Alignment.center,
-              child: Text(
-                'Phone',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Californian FB',
-                  letterSpacing: 1.0,
-                  fontSize: SizeConfig.safeBlockHorizontal*5,
+              child: Container(
+                alignment: Alignment.center,
+                height: SizeConfig.safeBlockVertical*3,
+                padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25, SizeConfig.safeBlockHorizontal*0.5, SizeConfig.safeBlockVertical*0.25),
+                child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(
+                    'Phone',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Californian FB',
+                      letterSpacing: 1.0,
+                      fontSize: SizeConfig.safeBlockHorizontal*5,
+                    ),
+                  ),
                 ),
               ),
             ),

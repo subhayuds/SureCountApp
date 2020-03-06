@@ -96,15 +96,18 @@ class CommonUIHelper {
 
   Widget createAccountsPageAppBar(context, drawerKey) {
     var appBar = AppBar(
-      title: Text("Organizations (Accounts)",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w800,
-          fontFamily: 'Californian FB',
-          letterSpacing: 1.0,
-          fontSize: 30,
-          inherit: true,
+      title: FittedBox(
+        fit: BoxFit.fitHeight,
+        child: Text("Accounts",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+            fontFamily: 'Californian FB',
+            letterSpacing: 1.0,
+            fontSize: 30,
+            inherit: true,
+          ),
         ),
       ),
       leading: IconButton(
