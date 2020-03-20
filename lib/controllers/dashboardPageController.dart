@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:sure_count_app/models/dashboardPageDAO.dart';
-import 'package:sure_count_app/models/vehiclePageDAO.dart';
+import 'package:sure_count_app/models/devicesListPageDAO.dart';
+import 'package:sure_count_app/models/vehiclesListPageDAO.dart';
 
 class DashboardPageController {
   DashboardPageController();
 
   void onAccountsTileTap(context) {
-    Navigator.pushNamed(context, '/accounts');
+    Navigator.pushNamed(context, '/accountsList');
   }
 
   void onVehiclesTileTap(context) {
-    VehiclePageDAO().getVehiclesList();
-    Navigator.pushNamed(context, '/vehicles');
+    VehiclesListPageDAO().getVehiclesList();
+    Navigator.pushNamed(context, '/vehiclesList');
+  }
+
+  void onDevicesTileTap(context) {
+    DevicesListPageDAO().getDeviceList();
+    Navigator.pushNamed(context, '/devicesList');
   }
 
   Future getAccountsCount() async {
@@ -22,5 +28,10 @@ class DashboardPageController {
   Future getVehiclesCount() async {
     int vehicleData = await DashboardPageDAO().getAccountsCount();
     return vehicleData;
+  }
+
+  Future getDeviesCount() async {
+    int deviceData = await DashboardPageDAO().getDevicesCount();
+    return deviceData;
   }
 }

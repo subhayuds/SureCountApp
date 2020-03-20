@@ -1,0 +1,3 @@
+class VehiclesDetailsPageController {
+  VehiclesDetailsPageController();
+}

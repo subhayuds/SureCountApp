@@ -7,7 +7,8 @@ class DashboardPageDAO {
 
   Future<int> getAccountsCount() async {
     try {
-      final response = await  http.get(Constants.serviceBaseURL + Constants.accountServicePath, headers: {"Accept": "application/json"},);
+      Uri serviceURI = Uri.http(Constants.serviceBaseURL, Constants.accountListServicePath);
+      final response = await  http.get(serviceURI, headers: {"Accept": "application/json"},);
       if (response.statusCode == 200) {
         var accountData = (json.decode(response.body))["organizations"] as List;
         return accountData.length;
@@ -21,7 +22,8 @@ class DashboardPageDAO {
 
   Future<int> getVehiclesCount() async {
     try {
-      final response = await http.get(Constants.serviceBaseURL + Constants.vehicleServicePath, headers: {"Accept": "application/json"},);
+      Uri serviceURI = Uri.http(Constants.serviceBaseURL, Constants.vehicleListServicePath);
+      final response = await http.get(serviceURI, headers: {"Accept": "application/json"},);
 
       if (response.statusCode == 200) {
         var vehicleData = (json.decode(response.body))["vehicles"] as List;
@@ -29,6 +31,23 @@ class DashboardPageDAO {
         return vehicleData.length;
       } else {
         throw Exception('Failed to load vehicles');
+      }
+    } catch(e) {
+      return 0;
+    }
+  }
+
+  Future<int> getDevicesCount() async {
+    try {
+      Uri serviceURI = Uri.http(Constants.serviceBaseURL, Constants.deviceListServicePath);
+      final response = await http.get(serviceURI, headers: {"Accept": "application/json"},);
+
+      if (response.statusCode == 200) {
+        var deviceData = (json.decode(response.body))["devices"] as List;
+        
+        return deviceData.length;
+      } else {
+        throw Exception('Failed to load devices');
       }
     } catch(e) {
       return 0;

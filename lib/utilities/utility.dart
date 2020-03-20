@@ -12,7 +12,25 @@ class Utility {
     Navigator.pushNamed(context, '/dashboard');
   }
 
-  void showLogoutAlert(BuildContext context) {
+  void showGenericAlert(BuildContext context, String alertMessage) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Alert"),
+          content: Text(alertMessage),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        )
+    );
+  }
+
+  void showLogoutDialog(BuildContext context) {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(

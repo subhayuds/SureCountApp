@@ -34,7 +34,7 @@ class CommonUIHelper {
             color: Colors.white,
             size: SizeConfig.safeBlockHorizontal*8,
           ),
-          onPressed: () => Utility().showLogoutAlert(context),
+          onPressed: () => Utility().showLogoutDialog(context),
         )
       ],
     );
@@ -42,9 +42,10 @@ class CommonUIHelper {
     return appBar;
   }
 
-  Widget createVehiclesPageAppBar(context, drawerKey) {
+  Widget createGenericPageAppBar(BuildContext context, String appBarTitle, GlobalKey<ScaffoldState> drawerKey) {
     var appBar = AppBar(
-      title: Text("Vehicles",
+      title: Text(
+        appBarTitle,
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,
@@ -86,63 +87,7 @@ class CommonUIHelper {
             color: Colors.white,
             size: SizeConfig.safeBlockHorizontal*6,
           ),
-          onPressed: () => Utility().showLogoutAlert(context),
-        )
-      ],
-    );
-
-    return appBar;
-  }
-
-  Widget createAccountsPageAppBar(context, drawerKey) {
-    var appBar = AppBar(
-      title: FittedBox(
-        fit: BoxFit.fitHeight,
-        child: Text("Accounts",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w800,
-            fontFamily: 'Californian FB',
-            letterSpacing: 1.0,
-            fontSize: SizeConfig.safeBlockHorizontal*6,
-            inherit: true,
-          ),
-        ),
-      ),
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: () {
-          drawerKey.currentState.openDrawer();
-        }
-      ),
-      backgroundColor: Colors.blueGrey,
-      elevation: 0.0,
-      automaticallyImplyLeading: false,
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Icons.home,
-            color: Colors.white,
-            size: SizeConfig.safeBlockHorizontal*6,
-          ),
-          onPressed: () => Utility().onHomeButtonPress(context),
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.add,
-            color: Colors.white,
-            size: SizeConfig.safeBlockHorizontal*6,
-          ),
-          onPressed: null,
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.exit_to_app,
-            color: Colors.white,
-            size: SizeConfig.safeBlockHorizontal*6,
-          ),
-          onPressed: () => Utility().onLogoutButtonPress(context),
+          onPressed: () => Utility().showLogoutDialog(context),
         )
       ],
     );
@@ -197,29 +142,9 @@ class CommonUIHelper {
               onTap: () => {},
             ),
             ListTile(
-              leading: Icon(Icons.featured_play_list),
-              title: Text('Features'),
-              onTap: () => {},
-            ),
-            ListTile(
               leading: Icon(Icons.assessment),
               title: Text('Accounts'),
               onTap: () => () => DashboardPageController().onAccountsTileTap(context),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_library),
-              title: Text('Evidences'),
-              onTap: () => {},
-            ),
-            ListTile(
-              leading: Icon(Icons.video_call),
-              title: Text('Live Video'),
-              onTap: () => {},
-            ),
-            ListTile(
-              leading: Icon(Icons.event_available),
-              title: Text('Events'),
-              onTap: () => {},
             ),
             ListTile(
               leading: Icon(Icons.directions_bus),
@@ -227,24 +152,39 @@ class CommonUIHelper {
               onTap: () => DashboardPageController().onVehiclesTileTap(context),
             ),
             ListTile(
-              leading: Icon(Icons.account_balance),
-              title: Text('Buildings'),
+              leading: Icon(Icons.video_call),
+              title: Text('Live Show'),
               onTap: () => {},
             ),
             ListTile(
-              leading: Icon(Icons.supervised_user_circle),
-              title: Text('Users'),
+              leading: Icon(Icons.event_available),
+              title: Text('Geo Events'),
               onTap: () => {},
             ),
             ListTile(
-              leading: Icon(Icons.devices),
-              title: Text('Devices'),
+              leading: Icon(Icons.local_library),
+              title: Text('Evidences'),
+              onTap: () => {},
+            ),
+            ListTile(
+              leading: Icon(Icons.featured_play_list),
+              title: Text('Reports'),
+              onTap: () => {},
+            ),
+            ListTile(
+              leading: Icon(Icons.message),
+              title: Text('Messages'),
+              onTap: () => {},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Preferences'),
               onTap: () => {},
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: () => Utility().showLogoutAlert(context),
+              onTap: () => Utility().showLogoutDialog(context),
             )
           ]
         ),
